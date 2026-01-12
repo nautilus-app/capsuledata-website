@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capsule Data — AI-Powered Portfolio Optimization</title>
+    <meta name="description" content="Capsule Data delivers intelligent portfolio optimization powered by artificial intelligence. Coming soon.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f6f8f4;
+            --bg-secondary: #eef2ea;
+            --bg-card: #fdfefb;
+            --text-primary: #2a2f2a;
+            --text-secondary: #5a635a;
+            --text-muted: #8a928a;
+            
+            /* Richer green to yellow palette with more contrast */
+            --slice-1: #5a9a68;
+            --slice-2: #7db87a;
+            --slice-3: #a8cf7d;
+            --slice-4: #d4de7a;
+            --slice-5: #edd673;
+            
+            --accent-green: #5a9a68;
+            --accent-yellow: #edd673;
+            --border: rgba(45, 60, 45, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Subtle background texture with green undertone */
+        .bg-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(ellipse 100% 80% at 30% 30%, rgba(90, 154, 104, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 60% at 70% 70%, rgba(237, 214, 115, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 120% 100% at 50% 50%, rgba(90, 154, 104, 0.04) 0%, transparent 70%);
+        }
+
+        /* Main Container */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Logo */
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        /* Modern 3D Pie Chart */
+        .chart-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin-bottom: 3.5rem;
+            animation: fadeInUp 1s ease 0.15s forwards;
+            opacity: 0;
+            perspective: 800px;
+        }
+
+        /* Shadow beneath 3D chart */
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(90, 154, 104, 0.2) 0%, transparent 70%);
+            filter: blur(5px);
+            animation: shadowFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes shadowFloat {
+            0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+        }
+
+        .pie-chart {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            transform: rotateX(55deg);
+            transform-style: preserve-3d;
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
+
+        /* Main pie surface - clean modern slices with 3D edge */
+        .pie-chart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                var(--slice-1) 0deg 72deg,
+                var(--slice-2) 72deg 144deg,
+                var(--slice-3) 144deg 216deg,
+                var(--slice-4) 216deg 288deg,
+                var(--slice-5) 288deg 360deg
+            );
+            /* Stacked shadows create continuous 3D edge */
+            box-shadow:
+                0 1px 0 0 #4a8a58,
+                0 2px 0 0 #4a8a58,
+                0 3px 0 0 #4d8c5a,
+                0 4px 0 0 #508e5c,
+                0 5px 0 0 #53905e,
+                0 6px 0 0 #569260,
+                0 7px 0 0 #599462,
+                0 8px 0 0 #5c9664,
+                0 9px 0 0 #5f9866,
+                0 10px 0 0 #629a68,
+                0 11px 0 0 #659c6a,
+                0 12px 0 0 #689e6c,
+                0 15px 30px rgba(90, 154, 104, 0.25),
+                0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Soft inner glow */
+        .pie-chart::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle at 30% 30%,
+                rgba(255, 255, 255, 0.25) 0%,
+                transparent 50%
+            );
+            pointer-events: none;
+        }
+
+        /* Slice separator lines - subtle */
+        .slice-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                repeating-conic-gradient(
+                    from 0deg,
+                    transparent 0deg 71.5deg,
+                    rgba(255, 255, 255, 0.4) 71.5deg 72.5deg,
+                    transparent 72.5deg 143.5deg,
+                    rgba(255, 255, 255, 0.4) 143.5deg 144.5deg,
+                    transparent 144.5deg 215.5deg,
+                    rgba(255, 255, 255, 0.4) 215.5deg 216.5deg,
+                    transparent 216.5deg 287.5deg,
+                    rgba(255, 255, 255, 0.4) 287.5deg 288.5deg,
+                    transparent 288.5deg 360deg
+                );
+            pointer-events: none;
+        }
+
+        /* Donut hole - clean center */
+        .pie-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52%;
+            height: 52%;
+            border-radius: 50%;
+            background: var(--bg-primary);
+            box-shadow:
+                inset 0 2px 8px rgba(0, 0, 0, 0.04),
+                0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .particle-1 {
+            top: -8px;
+            right: 50px;
+            width: 8px;
+            height: 8px;
+            background: var(--slice-2);
+            opacity: 0.85;
+            animation-delay: 0s;
+        }
+
+        .particle-2 {
+            bottom: 30px;
+            left: -5px;
+            width: 10px;
+            height: 10px;
+            background: var(--slice-4);
+            opacity: 0.8;
+            animation-delay: 2s;
+        }
+
+        .particle-3 {
+            top: 40%;
+            right: -12px;
+            width: 6px;
+            height: 6px;
+            background: var(--slice-5);
+            opacity: 0.9;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.1); }
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: rotateX(55deg) translateY(0); }
+            50% { transform: rotateX(55deg) translateY(-6px); }
+        }
+
+        /* Main Tagline */
+        .tagline {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+            font-weight: 500;
+            color: var(--text-primary);
+            max-width: 500px;
+            margin-bottom: 3rem;
+            line-height: 1.5;
+            letter-spacing: -0.01em;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .tagline .highlight {
+            background: linear-gradient(
+                90deg,
+                var(--accent-green) 0%,
+                var(--accent-yellow) 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.875rem 1.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            animation: fadeInUp 1s ease 0.45s forwards;
+            opacity: 0;
+        }
+
+        .coming-soon::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-yellow));
+            border-radius: 50%;
+            animation: pulse-dot 2.5s ease-in-out infinite;
+        }
+
+        .coming-soon span {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+            background: var(--bg-secondary);
+            animation: fadeIn 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .contact {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .logo {
+                margin-bottom: 3rem;
+                font-size: 0.8rem;
+            }
+
+            .chart-container {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 2.5rem;
+            }
+
+            .pie-hole span {
+                font-size: 1.1rem;
+            }
+
+            .tagline {
+                font-size: 1.15rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .coming-soon {
+                padding: 0.75rem 1.5rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-texture"></div>
+
+    <main class="container">
+        <div class="logo">Capsule <span>Data</span></div>
+
+        <div class="chart-container">
+            <div class="pie-chart">
+                <div class="slice-lines"></div>
+                <div class="pie-hole"></div>
+            </div>
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+        </div>
+
+        <p class="tagline">
+            Optimize, Analyze and Personalize Investment Portfolio — <span class="highlight">Powered by AI</span>
+        </p>
+
+        <div class="coming-soon">
+            <span>Coming Soon</span>
+        </div>
+    </main>
+
+    <footer>
+        <p class="contact">
+            Contact us at <a href="mailto:help@capsuledata.ai">help@capsuledata.ai</a>
+        </p>
+        <p class="copyright">© 2026 Capsule Data LLC</p>
+    </footer>
+</body>
+</html>
