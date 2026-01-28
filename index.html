@@ -299,41 +299,70 @@
             background-clip: text;
         }
 
-        /* Coming Soon Badge */
-        .coming-soon {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.875rem 1.75rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        /* Subtitle */
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin-bottom: 4rem;
             animation: fadeInUp 1s ease 0.45s forwards;
             opacity: 0;
         }
 
-        .coming-soon::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-yellow));
-            border-radius: 50%;
-            animation: pulse-dot 2.5s ease-in-out infinite;
+        /* Features Section */
+        .features {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease 0.55s forwards;
+            opacity: 0;
         }
 
-        .coming-soon span {
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+            width: 180px;
+            min-height: 150px;
+            justify-content: center;
+        }
+
+        .feature:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(90, 154, 104, 0.12);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-green), var(--slice-3));
+            border-radius: 12px;
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .feature h3 {
             font-family: 'Syne', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.85); }
+            color: var(--text-primary);
+            text-align: center;
         }
 
         /* Animations */
@@ -353,38 +382,63 @@
             }
         }
 
-        /* Footer */
+        /* Footer / Contact Section */
         footer {
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             position: relative;
             z-index: 1;
             border-top: 1px solid var(--border);
             background: var(--bg-secondary);
-            animation: fadeIn 1s ease 0.6s forwards;
+            animation: fadeIn 1s ease 0.7s forwards;
             opacity: 0;
         }
 
-        .contact {
-            font-size: 0.9rem;
-            color: var(--text-muted);
+        .footer-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
         }
 
-        .contact a {
-            color: var(--accent-green);
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--accent-green);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .contact a:hover {
-            color: var(--text-primary);
+        .contact-item a:hover {
+            color: var(--accent-green);
         }
 
         .copyright {
             font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 0.5rem;
+            margin-top: 1rem;
             opacity: 0.7;
         }
 
@@ -405,21 +459,36 @@
                 margin-bottom: 2.5rem;
             }
 
-            .pie-hole span {
-                font-size: 1.1rem;
-            }
-
             .tagline {
                 font-size: 1.15rem;
-                margin-bottom: 2.5rem;
+                margin-bottom: 2rem;
             }
 
-            .coming-soon {
-                padding: 0.75rem 1.5rem;
+            .subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 3rem;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .feature {
+                width: 100%;
+                min-height: auto;
+                padding: 1.25rem 1.5rem;
             }
 
             footer {
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -444,16 +513,58 @@
             Optimize, Analyze and Personalize Investment Portfolio — <span class="highlight">Powered by AI</span>
         </p>
 
-        <div class="coming-soon">
-            <span>Coming Soon</span>
+        <p class="subtitle">
+            AI-powered portfolio optimization with risk adjusted returns.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <h3>AI Portfolio<br>Optimization</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21H4.6C4.03995 21 3.75992 21 3.54601 20.891C3.35785 20.7951 3.20487 20.6422 3.10899 20.454C3 20.2401 3 19.9601 3 19.4V3"/>
+                        <path d="M7 14l4-4 4 4 6-6"/>
+                    </svg>
+                </div>
+                <h3>Analyze Any<br>Portfolio</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3>AI Risk<br>Assessment</h3>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p class="contact">
-            Contact us at <a href="mailto:help@capsuledata.ai">help@capsuledata.ai</a>
-        </p>
-        <p class="copyright">© 2026 Capsule Data LLC</p>
+        <h2 class="footer-title">Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                <a href="mailto:help@capsuledata.ai">help@capsuledata.ai</a>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <a href="tel:+14255408180">(425) 540-8180</a>
+            </div>
+        </div>
+        <p class="copyright">© 2026 Capsule Data LLC. All rights reserved.</p>
     </footer>
 </body>
 </html>
