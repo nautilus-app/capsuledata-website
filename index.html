@@ -442,6 +442,24 @@
             opacity: 0.7;
         }
 
+        .footer-links {
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-green);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
@@ -563,6 +581,9 @@
                 </svg>
                 <a href="tel:+14255408180">(425) 540-8180</a>
             </div>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
         </div>
         <p class="copyright">© 2026 Capsule Data LLC. All rights reserved.</p>
     </footer>

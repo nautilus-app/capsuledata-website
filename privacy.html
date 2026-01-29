@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Capsule Data</title>
+    <meta name="description" content="Privacy Policy for Capsule Data.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #f6f8f4;
+            --bg-secondary: #eef2ea;
+            --bg-card: #fdfefb;
+            --text-primary: #2a2f2a;
+            --text-secondary: #5a635a;
+            --text-muted: #8a928a;
+            --accent-green: #5a9a68;
+            --accent-yellow: #edd673;
+            --border: rgba(45, 60, 45, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .bg-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 100% 80% at 30% 30%, rgba(90, 154, 104, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 60% at 70% 70%, rgba(237, 214, 115, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 120% 100% at 50% 50%, rgba(90, 154, 104, 0.04) 0%, transparent 70%);
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 2rem 1rem;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .brand span { color: var(--accent-green); }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1rem 2rem 3rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 650;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p, li { color: var(--text-secondary); font-size: 0.98rem; }
+        ul { margin-left: 1.1rem; margin-top: 0.5rem; }
+        li { margin: 0.25rem 0; }
+
+        a { color: var(--accent-green); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            border-top: 1px solid var(--border);
+            background: var(--bg-secondary);
+            padding: 1.5rem 2rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header, main { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-texture"></div>
+
+    <header>
+        <a class="brand" href="index.html">Capsule <span>Data</span></a>
+    </header>
+
+    <main>
+        <section class="card">
+            <h1>Privacy Policy</h1>
+            <p class="meta">Last updated: January 2026</p>
+
+            <p>
+                This Privacy Policy describes how Capsule Data LLC (&ldquo;Capsule Data&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) collects, uses, and shares information when you visit our website.
+            </p>
+
+            <h2>Information we collect</h2>
+            <ul>
+                <li><strong>Contact information</strong>: If you contact us, we may receive your name, email address, and the contents of your message.</li>
+                <li><strong>Usage information</strong>: We may collect basic, aggregated information about how the site is accessed (e.g., pages viewed, approximate location, device/browser type).</li>
+            </ul>
+
+            <h2>How we use information</h2>
+            <ul>
+                <li>To respond to inquiries and provide support.</li>
+                <li>To operate and improve the website and our services.</li>
+                <li>To maintain security and prevent abuse.</li>
+            </ul>
+
+            <h2>Sharing</h2>
+            <p>
+                We do not sell your personal information. We may share information with service providers who help us operate the website, or if required by law.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                If you have questions about this Privacy Policy, contact us at
+                <a href="mailto:help@capsuledata.ai">help@capsuledata.ai</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Capsule Data LLC
+    </footer>
+</body>
+</html>
